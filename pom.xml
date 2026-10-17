@@ -11,6 +11,7 @@
     <groupId>com.ldaf</groupId>
     <artifactId>ebank-ms-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>ebank-ms-app</name>
     <description>ebank-ms-app</description>
     <url/>
@@ -20,6 +21,7 @@
     <developers>
         <developer/>
     </developers>
+
     <scm>
         <connection/>
         <developerConnection/>
