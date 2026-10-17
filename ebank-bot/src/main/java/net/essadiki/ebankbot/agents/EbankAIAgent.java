@@ -5,6 +5,8 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+
 @Service
 public class EbankAIAgent {
 
@@ -44,5 +46,16 @@ public class EbankAIAgent {
                 .content();
     }
 
-
+    public Flux<String> chatStream(String query, String conversationId) {
+        return chatClient.prompt()
+                .user(query)
+                .advisors(advisorSpec ->
+                        advisorSpec.param(
+                                ChatMemory.CONVERSATION_ID,
+                                conversationId
+                        )
+                )
+                .stream()
+                .content();
+    }
 }
